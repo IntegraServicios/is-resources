@@ -1,0 +1,19 @@
+version: '3'
+services:
+  is-resources-ms:
+    container_name: is-resources-ms
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - is_net
+    volumes:
+      - ./src:/is-resources-ms/src
+
+networks:
+  is_net:
+    name: is_net
