@@ -11,5 +11,6 @@ import { Schedule } from './entities/schedule.entity';
   imports: [TypeOrmModule.forFeature([Resource, Unit, ResourceType, Schedule])],
   controllers: [ResourceController],
   providers: [ResourceService],
+  exports: [ResourceService],
 })
 export class ResourceModule {}

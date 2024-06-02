@@ -1,11 +1,14 @@
 import {
   Column,
+  CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Schedule } from './schedule.entity';
 import { Resource } from './resource.entity';
@@ -27,6 +30,15 @@ export class ResourceType {
 
   @Column({ nullable: true, type: 'json' })
   characteristics: object;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 
   @OneToOne(() => Schedule, { nullable: false })
   @JoinColumn({ name: 'schedule_id' })

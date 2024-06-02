@@ -65,4 +65,11 @@ export class ResourceService {
       sun: { startAt: schedule.sundayStartAt, endAt: schedule.sundayEndAt },
     };
   }
+
+  getResourceById(id: number) {
+    return this.resourceRepository.findOne({
+      where: { id },
+      relations: { resourceType: { schedule: true } },
+    });
+  }
 }

@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { ResourceModule } from './resources/resources.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { ReservationsModule } from './reservations/reservations.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ConfigModule } from '@nestjs/config';
       logging: true,
     }),
     ResourceModule,
+    ReservationsModule,
   ],
   controllers: [AppController],
 })
