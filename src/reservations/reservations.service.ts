@@ -23,8 +23,15 @@ export class ReservationsService {
     return reservations;
   }
 
-  getUserReservations(userId: number) {
-    return this.reservationRepository.findBy({ userId });
+  async getUserReservations(userId: number) {
+    const reservations: any = await this.reservationRepository.find({
+      where: { userId },
+      relations: ['resource'],
+    });
+    reservations.forEach((reservation) => {
+      reservation.name = reservation.resource.name;
+    });
+    return reservations;
   }
 
   async reservateResource({
