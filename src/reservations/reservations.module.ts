@@ -3,7 +3,7 @@ import { ReservationsController } from './reservations.controller';
 import { ReservationsService } from './reservations.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ReservationEntity } from './entities/reservation.entity';
-import { ResourceModule } from 'src/resources/resources.module';
+import { ResourceModule } from '../resources/resources.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([ReservationEntity]), ResourceModule],

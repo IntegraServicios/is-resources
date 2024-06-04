@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ResourceType } from './resource-type.entity';
-import { ReservationEntity } from 'src/reservations/entities/reservation.entity';
+import { ReservationEntity } from '../../reservations/entities/reservation.entity';
 
 @Entity()
 export class Resource {

@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Resource } from 'src/resources/entities/resource.entity';
+import { Resource } from '../../resources/entities/resource.entity';
 import { ReservationStatus } from '../enums/reservations.enum';
 
 @Entity({ name: 'reservation' })

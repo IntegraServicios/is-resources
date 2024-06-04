@@ -4,7 +4,7 @@ import { ReservationEntity } from './entities/reservation.entity';
 import { Between, MoreThan, Repository } from 'typeorm';
 import { ReservateResourceDto } from './dtos/reservations.dto';
 import { DateTime } from 'luxon';
-import { ResourceService } from 'src/resources/resources.service';
+import { ResourceService } from '../resources/resources.service';
 import { ReservationStatus } from './enums/reservations.enum';
 @Injectable()
 export class ReservationsService {
@@ -13,8 +13,14 @@ export class ReservationsService {
     @InjectRepository(ReservationEntity)
     private readonly reservationRepository: Repository<ReservationEntity>,
   ) {}
-  getAllReservations() {
-    return this.reservationRepository.find();
+  async getAllReservations() {
+    const reservations: any = await this.reservationRepository.find({
+      relations: ['resource'],
+    });
+    reservations.forEach((reservation) => {
+      reservation.name = reservation.resource.name;
+    });
+    return reservations;
   }
 
   getUserReservations(userId: number) {
@@ -84,6 +90,7 @@ export class ReservationsService {
       startAt: startAt,
       endAt: endAt,
     });
+    return { message: 'OK' };
   }
 
   getResourcePendingReservations(id) {
