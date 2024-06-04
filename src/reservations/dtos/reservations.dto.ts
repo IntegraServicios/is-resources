@@ -1,5 +1,6 @@
-import { IsDateString, IsNumber } from 'class-validator';
+import { IsDateString, IsEnum, IsNumber } from 'class-validator';
 import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
+import { ReservationStatus } from '../enums/reservations.enum';
 
 export class ReservateResourceDto {
   @IsNumber()
@@ -22,4 +23,9 @@ export class ReservateResourceDto {
 
   @DeleteDateColumn()
   deletedAt: Date;
+}
+
+export class UpdateReservationStatus {
+  @IsEnum(ReservationStatus)
+  status: ReservationStatus;
 }

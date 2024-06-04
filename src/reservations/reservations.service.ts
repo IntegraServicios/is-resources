@@ -89,4 +89,14 @@ export class ReservationsService {
       startAt: MoreThan(new Date()),
     });
   }
+
+  updateReservationStatus(id: number, status: ReservationStatus) {
+    const newValues: Partial<ReservationEntity> = { status };
+    if (status === ReservationStatus.ON_LOAN) {
+      newValues.loanedAt = new Date();
+    } else if (status === ReservationStatus.RETURNED) {
+      newValues.returnedAt = new Date();
+    }
+    return this.reservationRepository.update(id, newValues);
+  }
 }

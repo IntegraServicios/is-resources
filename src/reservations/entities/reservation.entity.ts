@@ -24,6 +24,12 @@ export class ReservationEntity {
   @Column({ type: 'timestamp' })
   endAt: Date;
 
+  @Column({ type: 'timestamp', nullable: true })
+  loanedAt: Date;
+
+  @Column({ type: 'timestamp', nullable: true })
+  returnedAt: Date;
+
   @Column({ type: 'enum', enum: ReservationStatus })
   status: ReservationStatus;
 
