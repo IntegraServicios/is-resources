@@ -4,11 +4,15 @@ import {
   ReservateResourceDto,
   UpdateReservationStatus,
 } from './dtos/reservations.dto';
-import { ReservationStatus } from './enums/reservations.enum';
 
 @Controller('reservations')
 export class ReservationsController {
   constructor(private readonly reservationsService: ReservationsService) {}
+  @Get()
+  getAllReservations() {
+    return this.reservationsService.getAllReservations();
+  }
+
   @Get('user/:userId')
   getUserReservations(@Param('userId') userId: string) {
     return this.reservationsService.getUserReservations(+userId);
