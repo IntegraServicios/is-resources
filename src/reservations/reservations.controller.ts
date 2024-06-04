@@ -7,7 +7,7 @@ export class ReservationsController {
   constructor(private readonly reservationsService: ReservationsService) {}
   @Get('user/:userId')
   getUserReservations(@Param('userId') userId: string) {
-    return this.reservationsService.getUserReservations(userId);
+    return this.reservationsService.getUserReservations(+userId);
   }
 
   @Post()

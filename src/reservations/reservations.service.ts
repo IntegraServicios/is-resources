@@ -13,7 +13,7 @@ export class ReservationsService {
     @InjectRepository(ReservationEntity)
     private readonly reservationRepository: Repository<ReservationEntity>,
   ) {}
-  getUserReservations(userId: string) {
+  getUserReservations(userId: number) {
     return this.reservationRepository.findBy({ userId });
   }
 

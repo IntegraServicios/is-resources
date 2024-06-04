@@ -15,8 +15,8 @@ export class ReservationEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar' })
-  userId: string;
+  @Column({ type: 'int' })
+  userId: number;
 
   @Column({ type: 'timestamp' })
   startAt: Date;

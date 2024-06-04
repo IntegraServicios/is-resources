@@ -1,9 +1,9 @@
-import { IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsDateString, IsNumber } from 'class-validator';
 import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
 
 export class ReservateResourceDto {
-  @IsString()
-  userId: string;
+  @IsNumber()
+  userId: number;
 
   @IsNumber()
   resourceId: number;
